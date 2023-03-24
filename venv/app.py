@@ -15,6 +15,12 @@ class Item(db.Model):
     def __repr__(self):
         return f'<Item {self.name}>'
 
+@app.route("/")
+def hello():
+    return "Welcome to Flask Application!"
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
+
 @app.route('/items', methods=['GET'])
 def get_items():
     items = Item.query.all()
@@ -42,7 +48,5 @@ def delete_item(item_id):
     db.session.commit()
     return '', 204
 
-@app.route('/')
-def index():
-    return 'Hello World'
+
 
