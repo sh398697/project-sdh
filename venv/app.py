@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__, static_folder='../client/build', static_url_path='/')
+app = Flask(__name__)
 app.app_context().push()
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
@@ -44,7 +44,5 @@ def delete_item(item_id):
 
 @app.route('/')
 def index():
-    return app.send_static_file('./client/public/index.html')
+    return 'Hello World'
 
-if __name__ == '__main__':
-    app.run(debug=True)
